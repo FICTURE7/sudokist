@@ -77,7 +77,7 @@ struct sudoku *sudoku_load(const char *path) {
 			} else {
 				if (c == ' ') {
 #ifdef VERBOSE
-					fprintf(" unable to load, syntax err unexpected whitespace. ln:%d col:%d.\n", y + 1, i + 1);
+					fprintf(stderr, " unable to load, syntax err unexpected whitespace. ln:%d col:%d.\n", y + 1, i + 1);
 #endif
 					goto out_close_free_null;
 				}
