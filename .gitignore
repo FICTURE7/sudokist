@@ -1,1 +1,6 @@
+# VIM
+*.s[a-v][a-z]
+*.sw[a-p]
+
+# Build directory
 build/
