@@ -73,8 +73,8 @@ int main(int argc, char *argv[]) {
                 } else {
                     fprintf(stderr, "error: unknown option alias '%s'.\n", arg);
                     return 1;
-                }               
-            } 
+                }
+            }
         } else {
             processing_args = true;
             paths[argi] = arg;
@@ -98,7 +98,7 @@ int main(int argc, char *argv[]) {
         print_help();
         return 1;
     }
-    
+
     char *input = get_path(paths[0]);
     char *output = get_path(paths[1]);
 
@@ -121,5 +121,5 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "error: unable to save sudoku.\n");
         return 1;
     }
-	return 0;
+    return 0;
 }
