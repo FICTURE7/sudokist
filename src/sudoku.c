@@ -51,9 +51,9 @@ struct sudoku *sudoku_load(const char *path) {
 		// Check if we've got the line completely and
 		// subtract 1 so that we ignore the line ending
         // when we're going to loop through its characters.
-		if (line[len--] != '\n') {
+		if (line[--len] != '\n') {
 #ifdef VERBOSE
-			fprintf(stderr, " unable to load, could not get line completely from file.\n");
+			fprintf(stderr, " unable to load, could not get line completely from file at %d.\n", y + 1);
 #endif
 			goto out_close_free_null;
 		}
