@@ -89,4 +89,4 @@ int sudoku_save(const char *path, struct sudoku *sudoku);
 	@return Returns 0 if success otherwise -1.
 */
 int sudoku_solve(struct sudoku *sudoku);
-#endif /* SODUKO_H */
+#endif /* SUDOKU_H */
