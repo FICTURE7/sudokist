@@ -1,10 +1,10 @@
 #ifndef SUDOKU_H
 #define SUDOKU_H
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdbool.h>
 #include <assert.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 /**
@@ -18,12 +18,18 @@
 #define SUDOKU_TABLE_WIDTH 9
 
 /**
-    @breif Value of an unknown in a sudoku table.
+    @breif Value of an unknown in a sudoku table in memory.
 */
 #define SUDOKU_UNKNOWN -1
 
 /**
-    @brief Gets the value of a cell in the specified sudoku struct at the specified x and y coordinates.
+    @breif Value of an unknown in a sudoku table file.
+*/
+#define SUDOKU_UNKNOWN_CH 'x'
+
+/**
+    @brief Gets the value of a cell in the specified sudoku struct at the
+   specified x and y coordinates.
 
     @param s Pointer to sudoku struct.
     @param x x coordinate.
@@ -33,14 +39,15 @@
 #define SUDOKU_GET(s, x, y) s->table[(y * SUDOKU_TABLE_WIDTH) + x]
 
 /**
-    @brief Sets the value of a cell in the specified sudoku struct at the specified x and y coordinates.
+    @brief Sets the value of a cell in the specified sudoku struct at the
+   specified x and y coordinates.
 
     @param s Pointer to sudoku struct.
     @param x x coordinate.
     @param y y coordinate.
     @param v New value.
 */
-#define SUDOKU_SET(s, x, y, v) s->table[(y* SUDOKU_TABLE_WIDTH) + x] = v
+#define SUDOKU_SET(s, x, y, v) s->table[(y * SUDOKU_TABLE_WIDTH) + x] = v
 
 /**
     @brief Simple structure representing a sudoku table.
@@ -48,14 +55,24 @@
     Represents a Soduko table.
 */
 struct sudoku {
-    /**
-        @brief Table containing the values of the sudoku.
+  /**
+      @brief Determines if the soduko is verbose.
+  */
+  bool verbose;
 
-        Table containing the values of the sudoku and is of size
-        SODUKO_TABLE_HEIGHT * SODUKO_TABLE_WIDTH.
-    */
-    char table[SUDOKU_TABLE_HEIGHT * SUDOKU_TABLE_WIDTH];
+  /**
+      @brief Table containing the values of the sudoku.
+
+      Table containing the values of the sudoku and is of size
+      SODUKO_TABLE_HEIGHT * SODUKO_TABLE_WIDTH.
+  */
+  char table[SUDOKU_TABLE_HEIGHT * SUDOKU_TABLE_WIDTH];
 };
+
+/**
+    @brief Initializes a soduko struct.
+*/
+int sudoku_init(struct sudoku *sudoku, bool verbose);
 
 /**
     @brief Loads the Soduko table file at the specified path.
@@ -64,9 +81,10 @@ struct sudoku {
     a sudoku struct if success otherwise it returns NULL.
 
     @param path Path pointing to the soduko table file.
-    @return Returns a pointer to a sudoku struct if success otherwise it returns NULL.
+    @return Returns a pointer to a sudoku struct if success otherwise it returns
+   NULL.
 */
-struct sudoku *sudoku_load(const char *path);
+int sudoku_load(const char *path, struct sudoku *sudoku);
 
 /**
     @brief Saves the specified sudoku struct at the specified path.

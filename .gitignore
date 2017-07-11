@@ -1,3 +1,6 @@
+#VSCode
+.vscode/
+
 # VIM
 *.s[a-v][a-z]
 *.sw[a-p]
